@@ -29,7 +29,7 @@
         {{- with .Site.Author.name -}}
             "author": {
                 "@type": "Person",
-                "name": {{ . | safeHTML }}
+                "name": {{ . }}
             },
         {{- end -}}
         {{- with .Site.Params.description -}}
@@ -58,7 +58,7 @@
         {{- with .Site.Copyright -}}
             "license": "{{ . | safeHTML }}",
         {{- end -}}
-        "name": {{ .Site.Title | safeHTML }}
+        "name": {{ .Site.Title }}
     }
     </script>
 
@@ -126,7 +126,7 @@
         {{- $publisher = $params.seo.publisher | default dict | merge $publisher -}}
         "publisher": {
             "@type": "Organization",
-            "name": {{ $publisher.name | safeHTML }}
+            "name": {{ $publisher.name }}
             {{- $logo := $publisher.logoUrl -}}
             {{- with dict "Path" $logo "Resources" .Resources | partial "function/resource.html" -}}
                 ,"logo": {
@@ -144,7 +144,7 @@
         {{- with .Params.author | default .Site.Author.name | default (T "author") -}}
             "author": {
                 "@type": "Person",
-                "name": {{ . | safeHTML }}
+                "name": {{ . }}
             },
         {{- end -}}
         "description": {{ .Description | safeHTML }}
